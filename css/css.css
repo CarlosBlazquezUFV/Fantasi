@@ -1,0 +1,105 @@
+/* Resetear algunos estilos por defecto */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Contenedor principal */
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* Header */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+}
+
+header h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+/* Menú de navegación */
+nav .menu {
+    list-style-type: none;
+    text-align: center;
+}
+
+nav .menu li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+nav .menu a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+nav .menu a:hover {
+    background-color: #555;
+}
+
+/* Selector de idioma */
+.language-selector {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.language-selector a {
+    color: #333;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 1rem;
+}
+
+.language-selector .selected {
+    font-weight: bold;
+    color: #007BFF;
+}
+.language-selector .unselected {
+    font-weight: bold;
+    color: #cacaca;
+}
+
+
+.language-selector a:hover {
+    color: #007BFF;
+}
+
+/* Main content */
+main {
+    padding: 40px 0;
+    text-align: center;
+}
+
+main .content {
+    font-size: 1.2rem;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
