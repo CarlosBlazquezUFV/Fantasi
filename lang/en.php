@@ -5,6 +5,6 @@ $lang = array(
     "services" => "Services",
     "contact" => "Contact",
     "lenguage"=>"Change lenguage",
-    "title"=> "Fantasi lige"
+    "title"=> "Fantasy leage"
 );
 ?>
