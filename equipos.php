@@ -20,6 +20,26 @@ if (!isset($_SESSION['lang'])) {
 // Cargar los archivos de idioma
 $lang = $_SESSION['lang'];
 include("lang/$lang.php"); // Incluir el archivo de traducción correspondiente
+
+// Función para listar los equipos dinámicamente
+function listarEquipos($directorio) {
+    $archivos = array_diff(scandir($directorio), array('..', '.'));
+    $equipos = [];
+
+    foreach ($archivos as $archivo) {
+        if (pathinfo($archivo, PATHINFO_EXTENSION) === 'json') {
+            $equipos[] = [
+                'nombre' => pathinfo($archivo, PATHINFO_FILENAME),
+                'ruta' => $directorio . '/' . $archivo
+            ];
+        }
+    }
+
+    return $equipos;
+}
+
+// Obtener lista de equipos
+$equipos = listarEquipos('data');
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +48,7 @@ include("lang/$lang.php"); // Incluir el archivo de traducción correspondiente
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fantasy Football</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
@@ -38,9 +58,7 @@ include("lang/$lang.php"); // Incluir el archivo de traducción correspondiente
             <nav>
                 <ul class="menu">
                     <li><a href="index.php">Inicio</a></li>
-                    <li><a href="equipos.php">Equipos</a></li>
-                    <li><a href="jugadores.php">Jugadores</a></li>
-                    <li><a href="estadisticas.php">Estadísticas</a></li>
+                    <li><a href="#equipos">Equipos</a></li>
                     <li><a href="contact.php">Contacto</a></li>
                 </ul>
             </nav>
@@ -58,7 +76,16 @@ include("lang/$lang.php"); // Incluir el archivo de traducción correspondiente
 
     <main>
         <section class="content">
-            <p>Bienvenido a la Liga Fantasy. Selecciona un equipo para ver sus jugadores y estadísticas.</p>
+            <h2 id="equipos">Equipos</h2>
+            <ul class="teams">
+                <?php foreach ($equipos as $equipo): ?>
+                    <li>
+                        <a href="equipo.php?file=<?= urlencode($equipo['ruta']) ?>">
+                            <?= htmlspecialchars($equipo['nombre']) ?>
+                        </a>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
         </section>
     </main>
 
