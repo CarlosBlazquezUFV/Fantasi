@@ -22,13 +22,13 @@ public function mostrarHeader($lang) {
                         <a href="#">Jugadores ▼</a>
                         <ul class="submenu">';
                         foreach ($this->equipos as $clave => $archivo) {
-                            echo '<li><a href="jugadores.php?equipo='.$clave.'">'.$clave.'</a></li>';
+                            echo '<li><a href="index.php?equipo='.$clave.'">'.$clave.'</a></li>';
                         }
                         echo '</ul>
                     </li>
-                    <li><a href="jugadores.php">Equipos</a></li>
-                    <li><a href="estadisticas.php">Estadísticas</a></li>
-                    <li><a href="contact.php">Contacto</a></li>
+                    <li><a href="index.php">Equipos</a></li>
+                    <li><a href="index.php">Estadísticas</a></li>
+                    <li><a href="index.php">Contacto</a></li>
                 </ul>
             </nav>
             <div class="language-selector">
@@ -58,5 +58,98 @@ public function mostrarEncabezado($style){
     <title>Fantasy Football</title>
     <link rel="stylesheet" href="css/'.$style.'">
     </head><body>';
+}
+private function MostrarJugadores($array){
+    // Contenedor extra para las tarjetas
+    echo "<div class='jugadores-contenedor'>";
+    
+    foreach ($array as $clave => $valor) {
+        echo "<div class='jugador-tarjeta'>";
+        
+        // Imagen del jugador (se añadirá más tarde)
+        echo "<div class='jugador-imagen'>";
+        echo "<img src='path_to_image_placeholder.jpg' alt='Imagen del jugador' class='imagen-jugador' />";
+        echo "</div>";
+
+        // Información del jugador
+        echo "<div class='jugador-info'>";
+
+        // Mostrar todos los detalles de cada jugador
+        foreach($valor as $k=>$v) {
+            echo "<p><strong>";
+            
+            switch ($k) {
+                case 'status':
+                    echo "Estado:</strong> ";
+                    echo $v == 'ok' ? "OK" : "Lesionado";
+                    break;
+                case 'slug':
+                    echo "Nombre:</strong> ".$v;
+                    break;
+                case 'position':
+                    echo "Posición:</strong> ".$v;
+                    break;
+                case 'points':
+                    echo "Puntos:</strong> ".$v;
+                    break;
+                case 'marketValue':
+                    // Asegúrate de tener un array con valores de fechas, de lo contrario, este bloque no funcionará
+                    $hoy = "30/01/2025"; // Aquí puedes sustituirlo por la fecha actual
+                    $ayer = date("d/m/Y", strtotime(str_replace('/', '-', $hoy) . " -1 days"));
+                    $semanaPasada = date("d/m/Y", strtotime(str_replace('/', '-', $hoy) . " -7 days"));                    
+                    $dif1 = $v[$hoy] - $v[$ayer];
+                    $dif2 = $v[$hoy] - $v[$semanaPasada];
+
+                    echo "<p class='valor'>Valor:</strong> ".$v[$hoy]."</p>";
+                    echo "<p class='diffAyer'> Diferencia respecto ayer: ";
+                    echo $dif1 >= 0 ? "<span class='positivo'>$dif1</span>" : "<span class='negativo'>$dif1</span>";
+                    echo "</p>";
+                    echo "<p class='diffSem' >Diferencia respecto a la semana pasada: ";
+                    echo $dif2 >= 0 ? "<span class='positivo'>$dif2</span>" : "<span class='negativo'>$dif2</span>";
+                    echo "</p>";
+                    break;
+                case 'playerStats':
+                    //echo "Estadísticas del Jugador:</strong> ".json_encode($v); // Si 'playerStats' es un array, muestra su contenido.
+                    break;
+                default:
+                    //echo "Información no disponible.".$k;
+                    break;
+            }
+            
+            echo "</p>";
+        }
+
+        echo "</div>"; // Cierra la sección de información del jugador
+        echo "</div>"; // Cierra la tarjeta del jugador
+    }
+
+    echo "</div>"; // Cierra el contenedor de todas las tarjetas
+}
+public function datosEquipo($ruta){
+    // Verificar si el archivo existe
+    if (file_exists($ruta)) {
+
+    // Leer el contenido del archivo
+    $contenidoJson = file_get_contents($ruta);
+
+    // Reemplazar todos los valores "NaN" por "0" en el JSON
+    $contenidoJson = preg_replace('/\bNaN\b/', '0', $contenidoJson);
+
+    // Decodificar el JSON a un array asociativo de PHP
+    $data = json_decode($contenidoJson, true);
+        // Verificar si el JSON es válido
+        if (json_last_error() === JSON_ERROR_NONE) {
+            // Recorrer el array y mostrar claves y valores
+           $this->MostrarJugadores($data);
+        } else {
+            echo "Error al decodificar el JSON: " . json_last_error_msg();
+            echo "<br>".$ruta;
+        }
+    } else {
+        echo "El archivo JSON no existe en la ruta especificada.";
+    }
+}
+public function inicio(){
+    
 }
 }
