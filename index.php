@@ -2,7 +2,7 @@
 // Iniciar sesión
 session_start();
 include("view/vista.php");
-$rutaArchivo="./data/FantasyGuru-db/data/";
+$rutaArchivo="./data/";
 
 // Verificar si hay un idioma en la URL y establecerlo en la sesión
 if (isset($_GET['lang'])) {
