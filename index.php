@@ -26,8 +26,12 @@ if (empty($_GET) && empty($_POST)||isset($_GET['inicio'])) {
 }
 //al seleccionar equipo muestra por pantalla los datos de cada jugador de dicho equipo
 if (isset($_GET['equipo'])&&!empty($_GET['equipo'])) {
-    $rutaEquipo= $rutaArchivo.$equipos[$_GET['equipo']];
+    $rutaEquipo = $rutaArchivo . $equipos[$_GET['equipo']]["json"];
     $vista->datosEquipo($rutaEquipo);
+ }
+ if (isset($_GET['equipos'])) {
+   
+    $vista->mostrarEquipos();
  }
 $vista->mostrarFooter();
 

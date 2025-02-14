@@ -17,18 +17,18 @@ public function mostrarHeader($lang) {
             <h1>'.$lang['title'].'</h1>
             <nav>
                 <ul class="menu">
-                    <li><a href="index.php">Inicio</a></li>
+                    <li><a href="index.php?inicio">Inicio</a></li>
                     <li>
                         <a href="#">Jugadores ▼</a>
                         <ul class="submenu">';
-                        foreach ($this->equipos as $clave => $archivo) {
-                            echo '<li><a href="index.php?equipo='.$clave.'">'.$clave.'</a></li>';
+                        foreach ($this->equipos as $clave => $datos) {
+                            echo '<li><a href="index.php?equipo=' . $clave . '">' . $datos["name"] . '</a></li>';
                         }
                         echo '</ul>
                     </li>
-                    <li><a href="index.php">Equipos</a></li>
-                    <li><a href="index.php">Estadísticas</a></li>
-                    <li><a href="index.php">Contacto</a></li>
+                    <li><a href="?equipos">Equipos</a></li>
+                    <li><a href="?estadistica">Estadísticas</a></li>
+                    <li><a href="?contacto">Contacto</a></li>
                 </ul>
             </nav>
             <div class="language-selector">
@@ -150,6 +150,17 @@ public function datosEquipo($ruta){
     }
 }
 public function inicio(){
-    
+    echo "<h1>Bienvenida</h1>";
+}
+public function mostrarEquipos(){
+    echo "<div class='containerEquipos'>";
+    foreach ($this->equipos as $c => $v) {
+        echo "<div class='card' onclick=\"window.location.href='index.php?equipo=$c'\">";
+        echo "<img src='" . $v['escudo'] . "' alt='" . $v['name'] . "' class='escudo'>";
+        echo "<h3>" . $v["name"] . "</h3>";
+        echo "</div>";
+    }
+    echo "</div>";
+
 }
 }

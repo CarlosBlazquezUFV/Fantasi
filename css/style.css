@@ -1,4 +1,4 @@
-/* Resetear algunos estilos por defecto */
+
 
 /* Estilos generales */
 body {
@@ -24,7 +24,6 @@ footer {
     color: #fff;
     text-align: center;
     padding: 10px 0;
-    position: fixed;
     bottom: 0;
     width: 100%;
 }
@@ -49,8 +48,6 @@ footer {
     transform: translateY(-10px);
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
 }
-
-/* Estilos de la imagen */
 .jugador-imagen {
     width: 100%;
     height: 200px;
@@ -65,8 +62,6 @@ footer {
     height: auto;
     border-radius: 8px;
 }
-
-/* Estilo de la información del jugador */
 .jugador-info {
     padding: 15px;
     display: flex;
@@ -119,5 +114,36 @@ footer {
 .jugador-tarjeta:hover {
     transform: translateY(-10px);
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+/*contenedor para los quipos*/
+.containerEquipos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.card {
+    width: 200px;
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.3s;
+    background-color: white;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.escudo {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 10px;
 }
 
