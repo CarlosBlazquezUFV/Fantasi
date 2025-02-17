@@ -56,6 +56,7 @@ public function mostrarEncabezado($style){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fantasy Football</title>
+    <link rel="icon" href="Image/icono_F.png" type="image/png">
     <link rel="stylesheet" href="css/'.$style.'">
     </head><body>';
 }
