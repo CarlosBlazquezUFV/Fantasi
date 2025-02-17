@@ -39,10 +39,10 @@ public function mostrarHeader($lang) {
                 }
             echo '</div>
         </div>
-    </header>';
+    </header><main>';
 }
 public function mostrarFooter(){
-    echo '
+    echo '</main>
     <footer>
         <p>&copy; 2025 Fantasy Football</p>
     </footer>
