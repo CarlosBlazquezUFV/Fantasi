@@ -1,104 +1,105 @@
 <?php
 $rutaArchivo = './data/FantasyGuru-db/data/';
+$rutaImg='./Image/';
 $equipos = array(
     "ATM" => array(
         "json" => "2_ATM.json",
-        "escudo" => "Atm.png",
+        "escudo" => $rutaImg."Atm.svg",
         "name" => "Atlético de Madrid"
     ),
     "ATH" => array(
         "json" => "3_ATH.json",
-        "escudo" => "Ath.png",
+        "escudo" =>  $rutaImg."Ath.svg",
         "name" => "Athletic Club"
     ),
     "BAR" => array(
         "json" => "4_BAR.json",
-        "escudo" => "Bar.png",
+        "escudo" => $rutaImg."Bar.svg",
         "name" => "FC Barcelona"
     ),
     "BET" => array(
         "json" => "5_BET.json",
-        "escudo" => "Bet.png",
+        "escudo" =>  $rutaImg."Bet.svg",
         "name" => "Real Betis"
     ),
     "CEL" => array(
         "json" => "6_CEL.json",
-        "escudo" => "Cel.png",
+        "escudo" =>  $rutaImg."Cel.svg",
         "name" => "Celta de Vigo"
     ),
     "ESP" => array(
         "json" => "8_ESP.json",
-        "escudo" => "Esp.png",
+        "escudo" =>  $rutaImg."Esp.svg",
         "name" => "RCD Espanyol"
     ),
     "GET" => array(
         "json" => "9_GET.json",
-        "escudo" => "Get.png",
+        "escudo" =>  $rutaImg."Get.svg",
         "name" => "Getafe CF"
     ),
     "OSA" => array(
         "json" => "13_OSA.json",
-        "escudo" => "Osa.png",
+        "escudo" =>  $rutaImg."Osa.svg",
         "name" => "CA Osasuna"
     ),
     "RAY" => array(
         "json" => "14_RAY.json",
-        "escudo" => "Ray.png",
+        "escudo" =>  $rutaImg."Ray.svg",
         "name" => "Rayo Vallecano"
     ),
     "RMA" => array(
         "json" => "15_RMA.json",
-        "escudo" => "Rma.png",
+        "escudo" =>  $rutaImg."Rma.svg",
         "name" => "Real Madrid"
     ),
     "RSO" => array(
         "json" => "16_RSO.json",
-        "escudo" => "Rso.png",
+        "escudo" =>  $rutaImg."Rso.svg",
         "name" => "Real Sociedad"
     ),
     "SEV" => array(
         "json" => "17_SEV.json",
-        "escudo" => "Sev.png",
+        "escudo" =>  $rutaImg."Sev.svg",
         "name" => "Sevilla FC"
     ),
     "VAL" => array(
         "json" => "18_VAL.json",
-        "escudo" => "Val.png",
+        "escudo" =>  $rutaImg."Val.svg",
         "name" => "Valencia CF"
     ),
     "VLL" => array(
         "json" => "19_VLL.json",
-        "escudo" => "Vll.png",
+        "escudo" =>  $rutaImg."Vll.svg",
         "name" => "Real Valladolid"
     ),
     "VIL" => array(
         "json" => "20_VIL.json",
-        "escudo" => "Vil.png",
+        "escudo" =>  $rutaImg."Vil.svg",
         "name" => "Villarreal CF"
     ),
     "ALA" => array(
         "json" => "21_ALA.json",
-        "escudo" => "Ala.png",
+        "escudo" =>  $rutaImg."Ala.svg",
         "name" => "Deportivo Alavés"
     ),
     "GIR" => array(
         "json" => "28_GIR.json",
-        "escudo" => "Gir.png",
+        "escudo" =>  $rutaImg."Gir.svg",
         "name" => "Girona FC"
     ),
     "LPA" => array(
         "json" => "31_LPA.json",
-        "escudo" => "Lpa.png",
+        "escudo" =>  $rutaImg."Lpa.svg",
         "name" => "UD Las Palmas"
     ),
     "MLL" => array(
         "json" => "33_MLL.json",
-        "escudo" => "Mll.png",
+        "escudo" =>  $rutaImg."Mll.svg",
         "name" => "RCD Mallorca"
     ),
     "LEG" => array(
         "json" => "54_LEG.json",
-        "escudo" => "Leg.png",
+        "escudo" =>  $rutaImg."Leg.svg",
         "name" => "CD Leganés"
     )
 );
