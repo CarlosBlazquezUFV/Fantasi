@@ -2,7 +2,7 @@
 // Iniciar sesión
 session_start();
 include("view/vista.php");
-$rutaArchivo="./data/";
+$rutaArchivo = "./data/";
 
 // Verificar si hay un idioma en la URL y establecerlo en la sesión
 if (isset($_GET['lang'])) {
@@ -17,23 +17,33 @@ if (!isset($_SESSION['lang'])) {
 // Cargar los archivos de idioma
 $lang = $_SESSION['lang'];
 include("lang/$lang.php"); // Incluir el archivo de traducción correspondiente
-
-$vista=new Vista();
+//llamar al encabezado de la pagina
+$vista = new Vista();
 $vista->mostrarEncabezado('style.css');
 $vista->mostrarHeader($lang);
-if (empty($_GET) && empty($_POST)||isset($_GET['inicio'])) {
+
+//si es la primera vez
+if (empty($_GET) && empty($_POST) || isset($_GET['inicio'])) {
     $vista->inicio();
 }
+
 //al seleccionar equipo muestra por pantalla los datos de cada jugador de dicho equipo
-if (isset($_GET['equipo'])&&!empty($_GET['equipo'])) {
+if (isset($_GET['equipo']) && !empty($_GET['equipo'])) {
     $rutaEquipo = $rutaArchivo . $equipos[$_GET['equipo']]["json"];
     $vista->datosEquipo($rutaEquipo);
- }
- if (isset($_GET['equipos'])) {
-   
+}
+//hay un equipo seleccionado, enseña los jugadores de dicho equipo
+if (isset($_GET['equipos'])) {
+
     $vista->mostrarEquipos();
- }
+}
+if (isset($_GET['WhoIAm'])) {
+
+    $vista->quienesSomos();
+}
+if (isset($_GET['Proyect'])) {
+
+    $vista->objetivoProyecto();
+}
+//genera el footer
 $vista->mostrarFooter();
-
-?>
-
