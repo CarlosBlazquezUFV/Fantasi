@@ -3,8 +3,8 @@
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: hsl(50, 100%, 84%);
+    color: #3a4a8c;
     display: flex;
     flex-direction: column;
     min-height: 100vh;  /* Asegura que el contenido mínimo ocupe toda la altura de la ventana */
@@ -22,7 +22,7 @@ main .content {
 
 /* Footer */
 footer {
-    background-color: #333;
+    background: linear-gradient(90deg, orange, pink);
     color: #fff;
     text-align: center;
     padding: 20px 0;
@@ -35,7 +35,7 @@ footer form {
 }
 
 footer button {
-    background-color: #444;
+    background-color: pink;
     color: #fff;
     border: none;
     padding: 8px 15px;
@@ -47,9 +47,22 @@ footer button {
 }
 
 footer button:hover {
-    background-color: #555;
+    background-color: rgb(239, 52, 139);
 }
-
+button {
+    background-color: pink;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease-in-out;
+}
+button:hover {
+    background-color: rgb(239, 52, 139);
+}
 /* Estilo personalizado para la barra de desplazamiento */
 ::-webkit-scrollbar {
     width: 10px; /* Ancho de la barra de desplazamiento */
@@ -74,7 +87,7 @@ footer button:hover {
 /* Para aplicar a toda la página */
 html, body {
     scrollbar-width: thin; /* Estilo para Firefox (scrollbar delgada) */
-    scrollbar-color: #444 #f1f1f1; /* Color para Firefox: thumb y track */
+    scrollbar-color: rgb(71, 255, 255) #f1f1f1; /* Color para Firefox: thumb y track */
 }
 
 
@@ -248,4 +261,27 @@ html, body {
 
 .dia button:hover {
     background: #0056b3;
+}
+.inicio {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.text {
+    text-align: left;
+    flex: 1;
+}
+
+.img {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img img {
+    max-width: 100%;
+    height: auto;
 }

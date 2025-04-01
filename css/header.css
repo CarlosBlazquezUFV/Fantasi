@@ -1,7 +1,7 @@
 /* Estilos generales */
 header {
-    background-color: #222;
-    color: white;
+    background: linear-gradient(90deg, orange, pink);
+    color: rgb(255, 255, 255);
     padding: 15px 0;
     text-align: center;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
@@ -37,7 +37,7 @@ header {
 }
 
 .menu a:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background-color: rgba(239, 52, 139,0.2);
     border-radius: 5px;
 }
 
@@ -45,7 +45,7 @@ header {
 .submenu {
     display: none;
     position: absolute;
-    background-color: #333;
+    background-color: rgb(253, 255, 186);
     list-style: none;
     padding: 10px 0;
     top: 100%;
@@ -79,7 +79,7 @@ header {
 .submenu a {
     padding: 10px;
     display: block;
-    color: white;
+    color: rgb(255, 47, 224);
     transition: background 0.3s ease-in-out;
 }
 

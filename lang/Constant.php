@@ -89,7 +89,7 @@ $equipos = array(
     ),
     "LPA" => array(
         "json" => "31_LPA.json",
-        "escudo" =>  $rutaImg."Lpa.svg",
+        "escudo" =>  $rutaImg."lasPalmas.png",
         "name" => "UD Las Palmas"
     ),
     "MLL" => array(
@@ -99,7 +99,7 @@ $equipos = array(
     ),
     "LEG" => array(
         "json" => "54_LEG.json",
-        "escudo" =>  $rutaImg."Leg.svg",
+        "escudo" =>  $rutaImg."leganes.jpg",
         "name" => "CD Leganés"
     )
 );

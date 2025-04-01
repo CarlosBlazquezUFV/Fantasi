@@ -4,6 +4,7 @@ class Vista
 {
     private $idiomas;
     private $equipos;
+    private $rutaImg = "./image/";
     public function __construct()
     {
         global $idiomas, $equipos;
@@ -31,16 +32,8 @@ class Vista
                     </li>
                     <li><a href="?equipos">Equipos</a></li>
                     <li><a href="?estadistica">Estadísticas</a></li>
-                    <li><a href="?WhoIAm">Contacto</a></li>
                 </ul>
             </nav>
-            <div class="language-selector">
-                <p>' . $lang['lenguage'] . '</p>';
-        foreach ($this->idiomas as $codigo => $nombre) {
-            $class = ($codigo === $lang) ? 'class="selected"' : '';
-            echo '<a href="?lang=' . $codigo . '" ' . $class . '>' . $nombre . '</a> ';
-        }
-        echo '</div>
         </div>
     </header><main>';
     }
@@ -71,17 +64,7 @@ class Vista
     <link rel="stylesheet" href="css/' . $style . '">
     </head><body>';
     }
-    private function MostrarJugadores($array)
-    {
-        echo "<div class='dia'>";
-
-        echo "<form method='GET' action='index.php'>";
-        echo "<label for='fecha'>Selecciona una fecha:</label>";
-        echo "<input type='hidden' name='equipo' value='" . (isset($_GET['equipo']) ? $_GET['equipo'] : 'ATM') . "'>";
-        echo "<input type='date' name='fecha' id='fecha' value='" . (isset($_GET['fecha']) ? $_GET['fecha'] : date("Y-m-d")) . "'>";
-        echo "<button type='submit'>Filtrar</button>";
-        echo "</form>";
-        echo "</div>";
+    private function MostrarJugadores($array){
 
         // Contenedor extra para las tarjetas
         echo "<div class='jugadores-contenedor'>";
@@ -93,7 +76,9 @@ class Vista
 
             // Imagen del jugador (se añadirá más tarde)
             echo "<div class='jugador-imagen'>";
-            echo "<img src='path_to_image_placeholder.jpg' alt='Imagen del jugador' class='imagen-jugador' />";
+            if (isset($valor['slug'])) {
+                echo "<img src='" .$this->rutaImg. $valor['slug'] . ".jpg' alt='Imagen del jugador". $valor['slug'] ."' class='imagen-jugador' />";
+            }
             echo "</div>";
 
             // Información del jugador
@@ -183,24 +168,30 @@ class Vista
             echo "El archivo JSON no existe en la ruta especificada.";
         }
     }
-    public function inicio()
+    public function inicio($ruta)
     {
         echo "
         <div class='inicio'>
-            <h1>Bienvenido a la Web App de Liga Fantasy</h1>
-            <p>Esta aplicación web te permite visualizar los datos actualizados de los jugadores y equipos de la liga fantasy. Usamos una API para traer información en tiempo real sobre puntos, valor de mercado y rendimiento de cada jugador.</p>
-            
-            <h2>¿Qué encontrarás aquí?</h2>
-            <ul>
-                <li>Clasificación y estadísticas de cada equipo.</li>
-                <li>Puntos y rendimiento diario de los jugadores.</li>
-                <li>Evolución del valor de mercado en tiempo real.</li>
-            </ul>
-    
-            <p>Explora la información y toma mejores decisiones para tu equipo fantasy.</p>
-    
-            <a href='equipos.php' class='btn-inicio'>Ver Equipos</a>
-            <a href='jugadores.php' class='btn-inicio'>Ver Jugadores</a>
+            <div class='text'>
+                <h1>Bienvenido a nuestra web de la Liga Fantasy!!!</h1>
+                
+                <h2>¿Qué encontrarás aquí?</h2>
+                <ul>
+                    <li>Clasificación y estadísticas de cada equipo.</li>
+                    <li>Puntos y rendimiento de los jugadores.</li>
+                    <li>Evolución del valor de mercado.</li>
+                </ul>
+        
+                <p>Explora la información y toma mejores decisiones para tu equipo fantasy.</p>
+                
+                <form method='get' action=''>
+                    <button type='submit' name='equipos' value='all'>Ver Equipos</button>
+                    <button type='submit'  name='equipo' value='RMA'>Ver Jugadores</button>
+                </form>
+            </div>
+            <div class='img'>
+            <img src='".$ruta."fantasy_inicio.jpg'>
+            </div>
         </div>";
     }
     public function quienesSomos()
@@ -208,15 +199,17 @@ class Vista
         echo "
         <div class='quienes-somos'>
             <h2>¿Quiénes Somos?</h2>
-            <p>Somos un equipo apasionado por el análisis de datos deportivos y la optimización de estrategias en ligas fantasy. Nuestra web app utiliza datos en tiempo real para ofrecer información precisa y actualizada sobre equipos y jugadores.</p>
+            <p>Somos un grupo de alumnos de la  UFV a los que nos gusta el fútbol y crearnos equipos para competir entre nosotros. Nos podréis conocer como:</p>
+            <ul><li>Carlos Blázquez Puch</li><li>Marcos Chimeno Díaz</li><li>Enrique González Morell</li><li>Javier Mallo Martínez</li><li>Jaime Ortega Fernández</li><li>Claudia Sánchez Aguilar</li></ul>
 
             <h3>Nuestra Misión</h3>
-            <p>Brindar a los usuarios estadísticas detalladas y herramientas para mejorar su rendimiento en la liga fantasy.</p>
+            <p>Buscamos informar sobre los jugadores (estado, precio, balance, ...), sus equipos y sus respectivas actualizaciones diarias.</p>
 
             <h3>Nuestro Compromiso</h3>
-            <p>Nos aseguramos de que los datos sean actualizados diariamente para ofrecer información confiable y relevante.</p>
+            <p>Nos aseguramos de frecer información confiable y relevante sobre nuestros jugadores y equipos.</p>
 
             <p>¡Gracias por confiar en nosotros!</p>
+            <p>Esperamos que disfrutéis de nuestro entorno web.</p>
         </div>";
     }
 

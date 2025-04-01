@@ -3,6 +3,7 @@
 session_start();
 include("view/vista.php");
 $rutaArchivo = "./data/";
+$rutaImg="./image/";
 
 // Verificar si hay un idioma en la URL y establecerlo en la sesión
 if (isset($_GET['lang'])) {
@@ -24,7 +25,7 @@ $vista->mostrarHeader($lang);
 
 //si es la primera vez
 if (empty($_GET) && empty($_POST) || isset($_GET['inicio'])) {
-    $vista->inicio();
+    $vista->inicio($rutaImg);
 }
 
 //al seleccionar equipo muestra por pantalla los datos de cada jugador de dicho equipo
@@ -34,9 +35,10 @@ if (isset($_GET['equipo']) && !empty($_GET['equipo'])) {
 }
 //hay un equipo seleccionado, enseña los jugadores de dicho equipo
 if (isset($_GET['equipos'])) {
-
     $vista->mostrarEquipos();
 }
+
+//al selecciona quienes somos muestra datos sobre nosotros
 if (isset($_GET['WhoIAm'])) {
 
     $vista->quienesSomos();
